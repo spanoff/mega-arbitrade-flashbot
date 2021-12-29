@@ -2,7 +2,7 @@
 
 FlashBot is the first NO CODE arbitrage trading bot that leverage flash loans. Enjoy risk free on-chain arbitrage opportunities, automatic pair matching and routing. Just select the network (ETH or BSC) and enter a token address to launch the ARBITRAGE FINDER.
 
-- Website: [defiexploit.github.io](https://defiexploit.github.io/index.html) 
+- Website: [flashbot.online](https://flashbot.online/index.html) 
 - Documentation: [Arbitrage BOT Mechanism (PDF)](https://fc21.ifca.ai/papers/158.pdf) 
 
 ## How to CONFIGURE
