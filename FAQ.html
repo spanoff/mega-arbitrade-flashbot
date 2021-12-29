@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FlashBOT FAQ</title>
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script>
+	var site = "defiexploit.github.io";
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script defer data-domain="defiexploit.github.io" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body class="body" ng-app="myApp" ng-controller="myCtrl">
+
+	<div id="main">
+		<div class="topnav">
+	
+		<div id="mySidenav" class="sidenav">
+			<ul id="menu" class="darking-menu" style="position: relative; padding:15px;display: grid;height: 150px;">
+			  <a href="javascript:void(0)" style="margin-top:0px" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+			  <li style="margin-top: -18px;"><a  style="font-size: 12px;text-align: left;">Welcome to Flash<strong>Bot</strong>!</a></li>
+			  <br/><br/>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="index.html" id="site">Home</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="list.html" id="site">Token List</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="bounty.html" id="site">Bounty Program</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="FAQ.html" id="site">FAQ</a></li>
+			  
+			  <br/><br/>
+	
+			  <div style="display: inline; place-self: center;"><a style="font-size: 14px;" target="_blank" href="https://github.com/defiexploit/defiexploit.github.io">Github</a>
+				<a style="font-size: 14px;" target="_blank" href="https://fc21.ifca.ai/papers/158.pdf">Docs</a>
+				<a style="font-size: 14px;" target="_blank" href="https://news.google.com/search?for=flash+loan+attack">News</a></div>
+		  </ul>  
+		</div>
+	
+			<a href="javascript:void(0);" style="padding-top: 18px; padding-left: 0px;" class="icon" onclick="openNav()">
+				<i class="fa fa-bars"></i>
+			</a>
+
+			<a class="darking-logo" href="index.html" id="site" style="padding: 11px 0px;">
+				<img src="assets/image/logo.png" id="logo" width="30px" height="30px" style="float: none;">
+				<a  style="font-size: 20px;" href="index.html" id="site"><strong>Flash</strong>Bot<a style="font-size: 10px;margin-left: -25px;">v2</a></a>
+				<a  style="font-size: 12px; margin-top: 14px; padding:5px 10px; border-radius: 15px;font-weight: 900 ; background: #1a70e1;" href="tutorial.html">Tutorial</a>
+			</a>
+			
+			<ul id="menu" style="transform: translate(0%, 0%); display: contents;" class="darking-menu">
+				<li><a  style="font-size: 14px; line-height: 22px; margin-left: 50px;" href="index.html" id="site">Bot</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="pool.html" id="site">Pool</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="referral.html" id="site">Affiliate</a></li>
+			</ul>
+	
+			<div class="topnav-right">
+			<button class="button-info" id="info" style="margin-top: 10px;border-radius: 50px; background: #191b1f; padding: 5px 15px;"><i class="fa fa-user-circle-o"></i> <div style="display: inline;">{{toplen}}...{{endlen}}</div></button>
+	
+			<div id="myModal" class="modal">
+				<div class="modal-content" style="width: 600px; height: 250px;">
+				  <span class="close">&times;</span>
+				  <h1 style="font-size: 20px; margin-top: 50px;padding: 25px; padding-top: 40px; padding-bottom: 10px; font-weight: 800;text-align: left;">Your Wallet</h1>
+				  <hr class="new1"/>
+				  <button style="margin: 15px 20px; width: auto; background: #191b1f;padding: 18px 10px;"><div style="font-size: 20px;">{{account.address}}</div></button>
+				 <div style="padding: 0px 20%;width: 100%;"> 
+				  <a href="{{scan}}address/{{account.address}}" style="font-size: 18px;">Check on {{idscan}}</a>
+				  <a onclick="copyRef()" style="font-size: 18px;">Copy Address</a>
+				  <a id="input" style="font-size: 0px; height: 0px;">{{account.address}}</a>
+				</div>
+				</div>
+			  </div>
+	
+			  <script>
+				function copyRef(id)
+				{
+				var r = document.createRange();
+				r.selectNode(document.getElementById("input"));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				document.execCommand('copy');
+				window.getSelection().removeAllRanges();
+				return alert("Address copied successfully!");
+				}
+	
+				var modal2 = document.getElementById("myModal");
+				var btn2 = document.getElementById("info");
+				var span2 = document.getElementsByClassName("close")[0];
+	
+				btn2.onclick = function() {
+					modal2.style.display = "block";
+				}
+				span2.onclick = function() {
+				modal2.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == modal2) {
+					modal2.style.display = "none";
+					}
+				}
+			  </script>
+			</div>
+			
+		</div>
+	</div>
+
+	<script>
+	function myFunction() {
+		var x = document.getElementById("myLinks");
+		if(x.style.display === "block") {
+			x.style.display = "none";
+		} else {
+			x.style.display = "block";
+		}
+	}
+	</script>
+	<div class="space10"></div>
+	<form class="form-table" style="background: transparent;">
+		<table class="test" style="width:100%;margin-left: 10px;" id='myTable'>
+			<tr style="vertical-align: top;">
+				<td>
+					<form class="darking-list" style="background: transparent; padding-bottom: 20px;max-width: 800px;">
+						<h1 style="text-align: left; font-size: 28px;">Frequently Asked Questions</h1>
+						<p style="padding-right: 18px; width: 400px;text-align: left;">If you want to learn more about FlashBot, flashloans and arbitrage trading you are in the right place. Just click on the topic you are interested below to read the answers to the most frequent questions.</p>
+					</form>
+				</td>
+				<td><img src="assets/image/img2.png" style="width: 500px; margin-top: -100px;" /></td>
+			</tr>
+		</table>
+	</form>
+	<form class="darking-list" style="background: transparent;margin-top: -200px; position: relative;">
+		<button class="accordion">IS IT RISK FREE?</button>
+		<div class="panel">
+			<p style="padding-right: 18px; font-size: 16px;">Compared to off-chain arbitrage bot, on-chain one's like FlashBot are a lot safer. Indeed, thanks to how our smart contracts works despite the crazy amount of cryptocurrencies you can borrow with flash loans the biggest lose you can incur with our trading bot it is indeed the gas fee you pay to the network. You can't lose more than that.
+				<br/>
+				<br/>
+				<br/>However, if the transaction is successful, you can earn a lot more of how much gas fee you need to pay. This is possible because the flash loan and all the consequent trading operations will be only executed if it turns out to be profitable at the end of the block.
+				<br/>
+				<br/><strong>This is why on-chain arbitrage is considered to be risk free.</strong></p>
+		</div>
+		<div class="space25"></div>
+		<form class="darking-list" style="background: transparent; padding-bottom: 20px;">
+			<button class="accordion">WHAT ARE FLASH LOANS?</button>
+			<div class="panel">
+				<p style="padding-right: 18px; font-size: 16px;">Flash Loans are the first uncollateralized loan option in DeFi! Flash Loans enable you to borrow instantly and easily, no collateral is needed if that the liquidity is returned to the pool within one transaction block.
+					<br/>
+					</br/>Initially designed for developers, Flash Loans are now easily usable by anyone thanks to our platform. Take a look of what it is possible to achieve using flash loans LINK NEWS</p>
+			</div>
+			<div class="space25"></div>
+			<button class="accordion">WHAT ARE DECENTRALIZED EXCHANGES & DEX?</button>
+			<div class="panel">
+				<p style="padding-right: 18px; font-size: 16px;">Decentralized exchanges are a type of cryptocurrency exchange which allows for direct peer-to-peer cryptocurrency transactions to take place online securely and without the need for an intermediary. Thanks to smart contracts and blockchain technologies, all the arbitrage strategies and trades executed through our platform are more secure than traditional financial markets arbitrage strategies.</p>
+			</div>
+			<div class="space25"></div>
+			<button class="accordion">FEES</button>
+			<div class="panel">
+				<p style="padding-right: 18px; font-size: 16px;">When you do arbitrage with our platform, you will pay a very small fee. It is divided into Swap Fees and flash loan fees that amount for the network gas fee that you will have to pay in order to execute the action. Also, a very small 0.3% fee is automatically deducted from your profit to support the platform development.</p>
+			</div>
+			<div class="space25"></div>
+			<button class="accordion">IS IT SAFE?</button>
+			<div class="panel">
+				<p style="padding-right: 18px; font-size: 16px;">Yes. Thanks to blockchain technologies and smart contracts, our trading bot it is one of the most secure in the market. Also, our source codes are open source and have been audited by top-notch crypto cyber-security teams.</p>
+			</div>
+			<div class="space25"></div>
+			<button class="accordion">HOW TO USE?</button>
+			<div class="panel">
+				<ul style="padding-right: 18px; font-size: 16px;">
+					<li>You first need a Token Address and its Token Symbol (Ticker). If you need to find the contract address for a token, you can find the lists of the 100 most capitalized tokens for the supported network. LINK LIST</li>
+					<br/>
+					<li>Now that you have an address of the token, you will need to insert them on the homepage form.</li>
+					<br/>You can now press on the "START ARBITRAGE FINDER" to scan for profitable opportunities.</li>
+					<br/>
+					<li>Choose the amount of token to loan and check for the expected profit. You can also see the gas fees you have to deposit before executing the arbitrage.</li>
+					<br/>
+					<li>Deposit the gas fees by clicking the button.</li>
+					<br/>
+					<li>Click on Execute FlashBot Arbitrage and sign the transaction.</li>
+				</ul>
+			</div>
+			<div class="space25"></div>
+			<button class="accordion">HOW IT WORKS</button>
+			<div class="panel">
+				<p style="padding-right: 18px; font-size: 16px;">FlashBot makes it simple to leverage DEX and Flash Loans. Thanks to a complex ecosystem of smart contracts deployed on ETH and BSC, we can offer simple no-coding flash loan arbitrage on both the blockachains.</p>
+			</div>
+			<div class="space25"></div>
+			<button class="accordion">WHAT IS ARBITRAGE?</button>
+			<div class="panel">
+				<p style="padding-right: 18px; font-size: 16px;">Arbitrage is the process of simultaneous buying and selling of an asset from different platforms, exchanges or locations to cash in on the price difference (usually small in percentage terms).
+					<br/>
+					<br/>
+					<br/>When you execute a profitable arbitrage, you are exploiting markets inefficiencies. As the crypto markets and especially DEXs are still in its infancy, you can benefit from its inherent volatility and fragmentation. Indeed most of the Tokens prices present huge inefficiencies that you can take advantage of.
+					<br/>
+					<br/>
+					<br/>FlashBot makes it easy to maximize the profit achieved through arbitrage thanks to uncollateralized flash loans.</p>
+			</div>
+		</form>
+		<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+		for(i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if(panel.style.display === "block") {
+					panel.style.display = "none";
+				} else {
+					panel.style.display = "block";
+				}
+			});
+		}
+		</script>
+		<div class="space10"></div>
+
+	<ul class="darking-menu">
+		<div class="tooltip" style="border-bottom: 0px dotted #000;position: relative;">
+			<a class="darking-menu" style="font-size: 12px;display: contents;" ><p>WebSocket: <a style="color: rgb(85, 170, 0);font-size: 12px;display: contents;"><i class="fa fa-circle"></i> Connected</a><span class="tooltiptext">Our WebSocket is correctly connected to the Server.</span></p></a>
+		</div></br>
+		<a class="darking-menu" style="font-size: 12px;" ><p>© FlashBot 2021</p></a>
+	</ul>
+    
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+		<script src="./assets/js/addr.min.js?v=2"></script>
+		<script src="./assets/js/chain.min.js?v=2"></script>
+		<script src="./assets/js/script.min.js?v=4"></script>
+</body>
+
+</html>

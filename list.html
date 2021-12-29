@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FlashBOT List</title>
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script>
+	var site = "defiexploit.github.io";
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script defer data-domain="defiexploit.github.io" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body class="body" ng-app="myApp" ng-controller="myCtrl">
+
+	<div id="main">
+		<div class="topnav">
+	
+		<div id="mySidenav" class="sidenav">
+			<ul id="menu" class="darking-menu" style="position: relative; padding:15px;display: grid;height: 150px;">
+			  <a href="javascript:void(0)" style="margin-top:0px" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+			  <li style="margin-top: -18px;"><a  style="font-size: 12px;text-align: left;">Welcome to Flash<strong>Bot</strong>!</a></li>
+			  <br/><br/>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="index.html" id="site">Home</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="list.html" id="site">Token List</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="bounty.html" id="site">Bounty Program</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="FAQ.html" id="site">FAQ</a></li>
+			  
+			  <br/><br/>
+	
+			  <div style="display: inline; place-self: center;"><a style="font-size: 14px;" target="_blank" href="https://github.com/defiexploit/defiexploit.github.io">Github</a>
+				<a style="font-size: 14px;" target="_blank" href="https://fc21.ifca.ai/papers/158.pdf">Docs</a>
+				<a style="font-size: 14px;" target="_blank" href="https://news.google.com/search?for=flash+loan+attack">News</a></div>
+		  </ul>  
+		</div>
+	
+			<a href="javascript:void(0);" style="padding-top: 18px; padding-left: 0px;" class="icon" onclick="openNav()">
+				<i class="fa fa-bars"></i>
+			</a>
+
+			<a class="darking-logo" href="index.html" id="site" style="padding: 11px 0px;">
+				<img src="assets/image/logo.png" id="logo" width="30px" height="30px" style="float: none;">
+				<a  style="font-size: 20px;" href="index.html" id="site"><strong>Flash</strong>Bot<a style="font-size: 10px;margin-left: -25px;">v2</a></a>
+				<a  style="font-size: 12px; margin-top: 14px; padding:5px 10px; border-radius: 15px;font-weight: 900 ; background: #1a70e1;" href="tutorial.html">Tutorial</a>
+			</a>
+			
+			<ul id="menu" style="transform: translate(0%, 0%); display: contents;" class="darking-menu">
+				<li><a  style="font-size: 14px; line-height: 22px; margin-left: 50px;" href="index.html" id="site">Bot</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="pool.html" id="site">Pool</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="referral.html" id="site">Affiliate</a></li>
+			</ul>
+	
+			<div class="topnav-right">
+			<button class="button-info" id="info" style="margin-top: 10px;border-radius: 50px; background: #191b1f; padding: 5px 15px;"><i class="fa fa-user-circle-o"></i> <div style="display: inline;">{{toplen}}...{{endlen}}</div></button>
+	
+			<div id="myModal" class="modal">
+				<div class="modal-content" style="width: 600px; height: 250px;">
+				  <span class="close">&times;</span>
+				  <h1 style="font-size: 20px; margin-top: 50px;padding: 25px; padding-top: 40px; padding-bottom: 10px; font-weight: 800;text-align: left;">Your Wallet</h1>
+				  <hr class="new1"/>
+				  <button style="margin: 15px 20px; width: auto; background: #191b1f;padding: 18px 10px;"><div style="font-size: 20px;">{{account.address}}</div></button>
+				 <div style="padding: 0px 20%;width: 100%;"> 
+				  <a href="{{scan}}address/{{account.address}}" style="font-size: 18px;">Check on {{idscan}}</a>
+				  <a onclick="copyRef()" style="font-size: 18px;">Copy Address</a>
+				  <a id="input" style="font-size: 0px; height: 0px;">{{account.address}}</a>
+				</div>
+				</div>
+			  </div>
+	
+			  <script>
+				function copyRef(id)
+				{
+				var r = document.createRange();
+				r.selectNode(document.getElementById("input"));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				document.execCommand('copy');
+				window.getSelection().removeAllRanges();
+				return alert("Address copied successfully!");
+				}
+	
+				var modal2 = document.getElementById("myModal");
+				var btn2 = document.getElementById("info");
+				var span2 = document.getElementsByClassName("close")[0];
+	
+				btn2.onclick = function() {
+					modal2.style.display = "block";
+				}
+				span2.onclick = function() {
+				modal2.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == modal2) {
+					modal2.style.display = "none";
+					}
+				}
+			  </script>
+			</div>
+			
+		</div>
+	</div>
+
+	<script>
+	function myFunction2() {
+		var x = document.getElementById("myLinks");
+		if(x.style.display === "block") {
+			x.style.display = "none";
+		} else {
+			x.style.display = "block";
+		}
+	}
+	</script>
+	<div class="space10"></div>
+	<form class="form-table" style="background: transparent;">
+		<table class="test" style="width:100%;margin-left: 10px;" id='myTable'>
+			<tr style="vertical-align: top;">
+				<td>
+					<form class="darking-list" style="background: transparent; padding-bottom: 20px;max-width: 800px;">
+						<h1 style="text-align: left;">Find more <strong>tokens!</strong></h1>
+						<p style="padding-right: 18px; width: 400px;text-align: left;">With FlashBot you can do arbitrage on any <b>ERC20 (Ethereum)</b> and <b>BEP20 (Binance Smart Chain)</b> token. However we reccomend you use high cap tokens in order to get best results with our app. Here are the links with top 100 tokens for each network.<a style="color:white;" href="FAQ.html"><b>Learn more...</b></a></p>
+					</form>
+				</td>
+				<td><img src="assets/image/img1.png" style="width: 600px; margin-top: -80px;" /></td>
+			</tr>
+		</table>
+	</form>
+	<form class="form-table" style="background: transparent;margin-top: -520px; position: relative;">
+		<div class="darking">
+			<style type='text/css'>
+			table.test {
+				border-collapse: collapse;
+			}
+			
+			table.test th {
+				border-bottom: 1px solid #212429;
+				padding-bottom: 0px;
+				padding-top: 10px;
+			}
+			
+			table.test td {
+				border-bottom: 1px solid #212429;
+				padding-top: 10px;
+			}
+			</style>
+			<table class="test" style="width:100%;margin-left: 10px;" id='myTable'>
+				<div> </div>
+				<tr>
+					<th style="padding-bottom: 20px;padding-left: 10px; position: absolute;">Network</th>
+					<th></th>
+					<th style="padding-bottom: 20px;padding-left: 10px;">Routing</th>
+					<th style="padding-bottom: 20px;">
+						<div class="tooltip" style="position: relative;">
+							<div>Liquidity <span class="tooltiptext" style="width: 105px;">Volume * Price ($) </span> </div>
+						</div>
+					</th>
+					<th style="padding-bottom: 20px;">Supported</th>
+					<th style="padding-bottom: 20px;padding-left: 20px;">
+						<div class="tooltip" style="position: relative;">
+							<div>List <span class="tooltiptext" style="width: 105px;">Find all Tokens by Chain </span> </div>
+						</div>
+					</th>
+				</tr>
+				<tr>
+					<td><img src="assets/image/eth.png" width="35px" height="35px"></td>
+					<td>Ethereum</td>
+					<td><a style="color: white;text-shadow: 0px 0px 25px #9340ff;" target="_blank" href="https://app.uniswap.org/">Uniswap</a></td>
+					<td>
+						<a style="color: white;" target="_blank" href="https://coinmarketcap.com/currencies/ethereum/">
+							<div style="font-size: 12px;" id="eth_val"></div>
+						</a>
+					</td>
+					<td style="color: #59be59; padding-left: 10px;"> true</td>
+					<td style="padding-right: 15px;">
+						<button style="padding-top: 10px;margin-bottom: 10px; padding: 5px; border-radius: 5px;">
+							<div style="padding: 0px;text-align: center;text-shadow: 0px 0px 25px #9340ff;"><a target="_blank" href="https://etherscan.io/tokens" style="color: white;">ERC20</a></div>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><img src="assets/image/bnb.png" width="35px" height="35px"></td>
+					<td>Binance</td>
+					<td><a style="color: white;text-shadow: 0px 0px 25px #9340ff;" target="_blank" href="https://pancakeswap.finance/">PancakeSwap</a></td>
+					<td>
+						<a style="color: white;" target="_blank" href="https://coinmarketcap.com/currencies/binance-coin/">
+							<div style="font-size: 12px;" id="bnb_val"></div>
+						</a>
+					</td>
+					<td style="color: #59be59; padding-left: 10px;"> true</td>
+					<td style="padding-right: 15px;">
+						<button style="padding-top: 10px;margin-bottom: 10px; padding: 5px; border-radius: 5px;">
+							<div style="padding: 0px;text-align: center;text-shadow: 0px 0px 25px #9340ff;"><a target="_blank" href="https://bscscan.com/tokens" style="color: white;">BEP20</a></div>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><img src="assets/image/tron.png" width="35px" height="35px"></td>
+					<td>Tron</td>
+					<td><a style="color: white;text-shadow: 0px 0px 25px #9340ff;" target="_blank" href="#">NaN</a></td>
+					<td><a style="color: white;text-shadow: 0px 0px 25px #9340ff;" target="_blank" href="#">$ NaN</a></td>
+					<td style="color: #2077db; padding-left: 10px;"> Soon...</td>
+					<td style="padding-right: 15px;">
+						<button style="padding-top: 10px;margin-bottom: 10px; padding: 5px; border-radius: 5px;">
+							<div style="padding: 0px;text-align: center;text-shadow: 0px 0px 25px #9340ff;"><a target="_blank" href="https://tronscan.org/#/" style="color: white;">TRC20</a></div>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td><img src="assets/image/etc.png" width="35px" height="35px"></td>
+					<td>Ethereum C.</td>
+					<td><a style="color: white;text-shadow: 0px 0px 25px #9340ff;" target="_blank" href="#">NaN</a></td>
+					<td><a style="color: white;text-shadow: 0px 0px 25px #9340ff;" target="_blank" href="#">$ NaN</a></td>
+					<td style="color: #2077db; padding-left: 10px;"> Soon...</td>
+					<td style="padding-right: 15px;">
+						<button style="padding-top: 10px;margin-bottom: 10px; padding: 5px; border-radius: 5px;">
+							<div style="padding: 0px;text-align: center;text-shadow: 0px 0px 25px #9340ff;"><a target="_blank" href="https://blockscout.com/etc/mainnet/" style="color: white;">ERC20</a></div>
+						</button>
+					</td>
+				</tr>
+			</table>
+			<script>
+			function searchTable() {
+				var input, filter, found, table, tr, td, i, j;
+				input = document.getElementById("myInput-base");
+				filter = input.value.toUpperCase();
+				table = document.getElementById("myTable");
+				tr = table.getElementsByTagName("tr");
+				for(i = 0; i < tr.length; i++) {
+					td = tr[i].getElementsByTagName("td");
+					for(j = 0; j < td.length; j++) {
+						if(td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+							found = true;
+						}
+					}
+					if(found) {
+						tr[i].style.display = "";
+						found = false;
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+
+			function myFunction() {
+				var copyText = document.getElementById("myInput");
+				copyText.select();
+				copyText.setSelectionRange(0, 99999);
+				document.execCommand("copy");
+				alert("Copied the text: " + copyText.value);
+			}
+			</script>
+			<div class="space10"></div>
+		</div>
+	</form>
+	<div class="space10"></div>
+    
+	<ul class="darking-menu">
+		<div class="tooltip" style="border-bottom: 0px dotted #000;position: relative;">
+			<a class="darking-menu" style="font-size: 12px;display: contents;" ><p>WebSocket: <a style="color: rgb(85, 170, 0);font-size: 12px;display: contents;"><i class="fa fa-circle"></i> Connected</a><span class="tooltiptext">Our WebSocket is correctly connected to the Server.</span></p></a>
+		</div></br>
+		<a class="darking-menu" style="font-size: 12px;" ><p>© FlashBot 2021</p></a>
+	</ul>
+    
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<script src="./assets/js/addr.min.js?v=2"></script>
+	<script src="./assets/js/chain.min.js?v=2"></script>
+	<script src="./assets/js/script.min.js?v=4"></script>
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>FlashBOT Affiliate Program</title>
+
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+	<script>var site = "defiexploit.github.io";</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer data-domain="defiexploit.github.io" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body class="body" ng-app="myApp" ng-controller="myCtrl">
+
+	<div id="main">
+		<div class="topnav">
+	
+		<div id="mySidenav" class="sidenav">
+			<ul id="menu" class="darking-menu" style="position: relative; padding:15px;display: grid;height: 150px;">
+			  <a href="javascript:void(0)" style="margin-top:0px" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+			  <li style="margin-top: -18px;"><a  style="font-size: 12px;text-align: left;">Welcome to Flash<strong>Bot</strong>!</a></li>
+			  <br/><br/>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="index.html" id="site">Home</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="list.html" id="site">Token List</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="bounty.html" id="site">Bounty Program</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="FAQ.html" id="site">FAQ</a></li>
+			  
+			  <br/><br/>
+	
+			  <div style="display: inline; place-self: center;"><a style="font-size: 14px;" target="_blank" href="https://github.com/defiexploit/defiexploit.github.io">Github</a>
+				<a style="font-size: 14px;" target="_blank" href="https://fc21.ifca.ai/papers/158.pdf">Docs</a>
+				<a style="font-size: 14px;" target="_blank" href="https://news.google.com/search?for=flash+loan+attack">News</a></div>
+		  </ul>  
+		</div>
+	
+			<a href="javascript:void(0);" style="padding-top: 18px; padding-left: 0px;" class="icon" onclick="openNav()">
+				<i class="fa fa-bars"></i>
+			</a>
+
+			<a class="darking-logo" href="index.html" id="site" style="padding: 11px 0px;">
+				<img src="assets/image/logo.png" id="logo" width="30px" height="30px" style="float: none;">
+				<a  style="font-size: 20px;" href="index.html" id="site"><strong>Flash</strong>Bot<a style="font-size: 10px;margin-left: -25px;">v2</a></a>
+				<a  style="font-size: 12px; margin-top: 14px; padding:5px 10px; border-radius: 15px;font-weight: 900 ; background: #1a70e1;" href="tutorial.html">Tutorial</a>
+			</a>
+			
+			<ul id="menu" style="transform: translate(0%, 0%); display: contents;" class="darking-menu">
+				<li><a  style="font-size: 14px; line-height: 22px; margin-left: 50px;" href="index.html" id="site">Bot</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="pool.html" id="site">Pool</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="referral.html" id="site">Affiliate</a></li>
+			</ul>
+	
+			<div class="topnav-right">
+			<button class="button-info" id="info" style="margin-top: 10px;border-radius: 50px; background: #191b1f; padding: 5px 15px;"><i class="fa fa-user-circle-o"></i> <div style="display: inline;">{{toplen}}...{{endlen}}</div></button>
+	
+			<div id="myModal" class="modal">
+				<div class="modal-content" style="width: 600px; height: 250px;">
+				  <span class="close">&times;</span>
+				  <h1 style="font-size: 20px; margin-top: 50px;padding: 25px; padding-top: 40px; padding-bottom: 10px; font-weight: 800;text-align: left;">Your Wallet</h1>
+				  <hr class="new1"/>
+				  <button style="margin: 15px 20px; width: auto; background: #191b1f;padding: 18px 10px;"><div style="font-size: 20px;">{{account.address}}</div></button>
+				 <div style="padding: 0px 20%;width: 100%;"> 
+				  <a href="{{scan}}address/{{account.address}}" style="font-size: 18px;">Check on {{idscan}}</a>
+				  <a onclick="copyRef()" style="font-size: 18px;">Copy Address</a>
+				  <a id="input" style="font-size: 0px; height: 0px;">{{account.address}}</a>
+				</div>
+				</div>
+			  </div>
+	
+			  <script>
+				function copyRef(id)
+				{
+				var r = document.createRange();
+				r.selectNode(document.getElementById("input"));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				document.execCommand('copy');
+				window.getSelection().removeAllRanges();
+				return alert("Address copied successfully!");
+				}
+	
+				var modal2 = document.getElementById("myModal");
+				var btn2 = document.getElementById("info");
+				var span2 = document.getElementsByClassName("close")[0];
+	
+				btn2.onclick = function() {
+					modal2.style.display = "block";
+				}
+				span2.onclick = function() {
+				modal2.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == modal2) {
+					modal2.style.display = "none";
+					}
+				}
+			  </script>
+			</div>
+			
+		</div>
+	</div>
+	
+	<script>
+		function myFunction() {
+		  var x = document.getElementById("myLinks");
+		  if (x.style.display === "block") {
+			x.style.display = "none";
+		  } else {
+			x.style.display = "block";
+		  }
+		}
+	</script>
+
+		<div class="space10"></div>
+		<form class="form-table" style="background: transparent;">
+			<table  class="test"  style="width:100%;margin-left: 10px;" id='myTable'>
+	<tr style="vertical-align: top;"> 
+		<td>
+			<form class="darking-list" style="background: transparent; padding-bottom: 20px;max-width: 800px;">
+				<h1 style="text-align: left;">Invite your <strong>friends!</strong></h1>
+				<p style="padding-right: 18px; width: 400px;text-align: left;">Thanks to our referral system, anyone can <b>EARN 50% OF DAPP FEES.</b> No registration needed, you just need to login with <b>MetaMask</b> and share the link below to start earning crypto today. Your earnings will be automatically sent to your wallet address whenever they occur.</p>
+				</form>
+	
+		</td>
+		<td>
+			<img src="assets/image/img4.png" style="width: 500px; margin-top: -50px;"/>
+		</td>
+	</tr>
+			</table></form>
+			
+	<span style="display:block; margin-bottom:-50px; margin-top: -300px;overflow: visible;">
+		<div class="space10"></div>
+		<form class="darking" style="background: rgb(17, 17, 17); width: 450px; height: 120px;overflow: overlay;">
+			<a style="font-size: 36px; color: white; float: right; padding-top: 18px;">0.00 BNB</a><br/>
+			<a style="font-size: 22px; color: white;">Total Earned:</a><br/>
+			<a style="font-size: 12px; color: white;">Loading Fee: <b>50%</b> of Team Fee</a>
+		</form>
+		</span>
+
+	<form class="darking" style="width: 450px;padding-top: 20px;margin-top: -20px;overflow: overlay;margin-bottom: 40px;">
+		<div class="grid-container">
+			<div class="item1">
+				<img src="https://i.stack.imgur.com/0dh5v.png" style="width: 65px; height: 65px; border-radius:65px;" />
+			</div>
+			<div class="item2">
+				<div style="padding-top: 4px; font-size: 16px; text-align: left;">Your Account: 
+				<a style="font-size: 18px; color: white; display: inline-block; padding: 0px;" 
+					href="https://bscscan.com/address/{{account.address}}"><div style="display: inline; font-size: 22px;">{{toplen}}...{{endlen}}</div></a><br/>
+					Last deposit: <div style="font-size: 16px;display: inline-block;">NaN</div>
+				</div>
+			</div>
+		</div>
+
+<div class="space25"></div>
+		<div class="input-holder btn-holder">
+			<button class="button-2" style="margin-top: -12px; font-size: 14px; background: #1a70e1;"><b>AUTOMATIC PAYOUT TO YOUR WALLET.</b><br/></button>
+		</div>	
+		</div>
+
+	<script>
+	function copyRef2(id)
+	{
+	var r = document.createRange();
+	r.selectNode(document.getElementById("input_ref"));
+	window.getSelection().removeAllRanges();
+	window.getSelection().addRange(r);
+	document.execCommand('copy');
+	window.getSelection().removeAllRanges();
+	return alert("Referral link copied successfully!");
+	}
+	</script>
+	</form>
+
+<a style="color: white; margin-top: 25px;font-size: 22px;">Your Referral Link:</a><br/>
+
+	<a id="input_ref" style="font-size: 0px; height: 0px;">https://defiexploit.github.io/index.html?ref={{account.address}}</a>
+	<button onclick="copyRef2()" 
+	style="margin-top: 20px;cursor: pointer;margin-left: -25px;background: rgb(17, 17, 17); width: auto; padding: 15px; font-size: 18px;">
+		<img src="assets/image/copy.png" style="width: 18px; height: 18px;vertical-align: middle;" />
+		https://defiexploit.github.io/index.html?ref={{account.address}}
+	</button>
+	
+	<form style="padding-top: 30px; background: transparent;">
+		
+	<embed><div class="a2a_kit a2a_kit_size_32 a2a_default_style" style="padding-left: 20px;">
+		<a class="a2a_dd" href="https://defiexploit.github.io/index.html?ref={{account.address}}"></a>
+		<a class="a2a_button_twitter"></a>
+		<a class="a2a_button_whatsapp"></a>
+		<a class="a2a_button_reddit"></a>
+		<a class="a2a_button_facebook"></a>
+		<a class="a2a_button_email"></a>
+		<a class="a2a_button_telegram"></a>
+		<a class="a2a_button_pinterest"></a>
+		<a class="a2a_button_facebook_messenger"></a>
+		<a class="a2a_button_vk"></a>
+		</div>
+		<script async src="https://static.addtoany.com/menu/page.js"></script></embed>
+	</form>
+
+	<div class="space10"></div>
+
+	<ul class="darking-menu">
+		<div class="tooltip" style="border-bottom: 0px dotted #000;position: relative;">
+			<a class="darking-menu" style="font-size: 12px;display: contents;" ><p>WebSocket: <a style="color: rgb(85, 170, 0);font-size: 12px;display: contents;"><i class="fa fa-circle"></i> Connected</a><span class="tooltiptext">Our WebSocket is correctly connected to the Server.</span></p></a>
+		</div></br>
+		<a class="darking-menu" style="font-size: 12px;" ><p>© FlashBot 2021</p></a>
+	</ul>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<script src="./assets/js/addr.min.js?v=2"></script>
+	<script src="./assets/js/chain.min.js?v=2"></script>
+	<script src="./assets/js/script.min.js?v=4"></script>
+</body>
+
+</html>

